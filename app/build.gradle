@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+     defaultConfig {
+        applicationId "omar.apps923.simple_alarm"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+
+         javaCompileOptions {
+             annotationProcessorOptions {
+                 arguments = [ "eventBusIndex" : 'omar.apps923.simple_alarm.MyEventBusIndex'
+                 ]
+             }
+         }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main.res.srcDirs += 'src/main/res'
+        main.res.srcDirs += 'src/main/res_alarm'
+
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.1', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    def lifecycle_version = "2.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "android.arch.lifecycle:common-java8:$lifecycle_version"
+
+
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.1.1'
+
+    implementation project(':ui_base')
+  annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
+
+
+     //start alarm-->
+    def room_version = "2.1.0"
+    api "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    def work_version = "2.1.0"
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
+    implementation 'com.google.code.gson:gson:2.8.5'
+   //end alarm-->
+
+
+
+
+}

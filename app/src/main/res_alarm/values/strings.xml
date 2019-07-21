@@ -1,0 +1,18 @@
+<resources>
+
+
+    <!-- Heading for the app widget ID panel. -->
+    <string name="widget_id_label">Widget ID</string>
+
+    <!-- Heading for the updated panel. -->
+    <string name="widget_update_label">Last updated</string>
+
+    <!-- Button label for the update button. -->
+    <string name="widget_button_update">Update now</string>
+
+    <string name="no_alarm_scheduled">no alarm scheduled</string>
+    <string name="next_alarm_label">next alarm at</string>
+    <string name="time_to_next_alarm_label">remains</string>
+
+
+</resources>
